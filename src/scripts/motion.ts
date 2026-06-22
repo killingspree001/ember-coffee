@@ -164,6 +164,9 @@ if (!reduce) {
         scrub: 1,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        // Measure this pinned trigger before the ones below it, so their
+        // start/end positions account for the space the pin adds.
+        refreshPriority: 1,
       },
     });
 
