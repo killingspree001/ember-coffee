@@ -1,0 +1,119 @@
+---
+const year = 2026;
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" href="/">Ember<span>.</span></a>
+        <p>Small-batch coffee, roasted by fire in Portland, Oregon.</p>
+      </div>
+
+      <div class="footer__cols">
+        <div>
+          <h4>Coffee</h4>
+          <a href="#coffees">Single origins</a>
+          <a href="#coffees">Blends</a>
+          <a href="#shop">Subscription</a>
+        </div>
+        <div>
+          <h4>Studio</h4>
+          <a href="#story">Our story</a>
+          <a href="#ritual">Brew guides</a>
+          <a href="#shop">Wholesale</a>
+        </div>
+        <div>
+          <h4>Say hello</h4>
+          <a href="mailto:hello@ember.coffee">hello@ember.coffee</a>
+          <a href="#">Instagram</a>
+          <a href="#">Newsletter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {year} Ember Coffee Roasters</span>
+      <span>Roasted with care · shipped within days</span>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+  .footer {
+    background: var(--espresso);
+    color: var(--cream);
+    padding-block: clamp(3.5rem, 7vw, 5.5rem) 2rem;
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(244, 236, 224, 0.15);
+  }
+
+  .footer__logo {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+
+    span {
+      color: var(--accent);
+    }
+  }
+
+  .footer__brand p {
+    margin-top: 0.8rem;
+    color: rgba(244, 236, 224, 0.6);
+    max-width: 22rem;
+  }
+
+  .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    h4 {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(244, 236, 224, 0.5);
+      margin-bottom: 1rem;
+    }
+
+    a {
+      display: block;
+      padding: 0.3rem 0;
+      color: rgba(244, 236, 224, 0.85);
+      transition: color 0.2s var(--ease);
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    justify-content: space-between;
+    padding-top: 1.8rem;
+    font-size: 0.85rem;
+    color: rgba(244, 236, 224, 0.5);
+  }
+
+  @media (max-width: 760px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .footer__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

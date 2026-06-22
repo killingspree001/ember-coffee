@@ -1,0 +1,158 @@
+---
+---
+
+<section class="hero">
+  <div class="hero__media">
+    <img
+      data-parallax
+      src="/images/hero.jpg"
+      alt="A slow pour of coffee over a glass carafe"
+      fetchpriority="high"
+    />
+    <div class="hero__scrim"></div>
+  </div>
+
+  <div class="container hero__content">
+    <p class="eyebrow hero__eyebrow">Small batch · roasted by fire</p>
+    <h1 class="hero__title display">
+      A new look at<br />an old <em>ritual</em>
+    </h1>
+    <p class="hero__lead">
+      Seasonal single origins and house blends, roasted in small drums and
+      shipped within days of the cooling tray.
+    </p>
+    <div class="hero__actions">
+      <a href="#coffees" class="btn">Shop the roast</a>
+      <a href="#story" class="btn btn--ghost hero__ghost">Our story</a>
+    </div>
+  </div>
+
+  <a href="#story" class="hero__scroll" aria-label="Scroll down">
+    <span>Scroll</span>
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>
+
+<style lang="scss">
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: var(--paper);
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: -8% 0;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(20, 14, 9, 0.82) 0%,
+      rgba(20, 14, 9, 0.35) 45%,
+      rgba(20, 14, 9, 0.25) 100%
+    );
+  }
+
+  .hero__content {
+    padding-bottom: clamp(4rem, 9vw, 8rem);
+    padding-top: 8rem;
+    max-width: 60rem;
+  }
+
+  .hero__eyebrow {
+    color: #f0c4a3;
+  }
+
+  .hero__title {
+    margin-top: 1.1rem;
+    color: var(--paper);
+
+    em {
+      font-style: italic;
+      color: #e89a6f;
+    }
+  }
+
+  .hero__lead {
+    margin-top: 1.6rem;
+    max-width: 34rem;
+    font-size: 1.2rem;
+    color: rgba(251, 246, 238, 0.82);
+  }
+
+  .hero__actions {
+    margin-top: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  .hero__ghost {
+    color: var(--paper);
+    border-color: rgba(251, 246, 238, 0.45);
+
+    &:hover {
+      background: rgba(251, 246, 238, 0.12);
+    }
+  }
+
+  .hero__scroll {
+    position: absolute;
+    right: clamp(1.5rem, 4vw, 3rem);
+    bottom: clamp(4rem, 9vw, 8rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(251, 246, 238, 0.75);
+    writing-mode: vertical-rl;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(rgba(251, 246, 238, 0.7), transparent);
+    animation: drip 2.2s var(--ease) infinite;
+  }
+
+  @keyframes drip {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    45% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    55% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero__scroll {
+      display: none;
+    }
+  }
+</style>

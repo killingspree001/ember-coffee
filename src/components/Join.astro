@@ -1,0 +1,124 @@
+---
+---
+
+<section class="join section" id="shop">
+  <div class="container">
+    <div class="join__panel" data-reveal>
+      <p class="eyebrow">The subscription</p>
+      <h2 class="join__title">Fresh beans,<br />every fortnight</h2>
+      <p class="join__lead">
+        Pick a roast, pick a rhythm. We grind to order and post it the morning
+        it&apos;s roasted. Skip or cancel any time.
+      </p>
+
+      <form class="join__form" id="join-form">
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          aria-label="Email address"
+        />
+        <button type="submit" class="btn">Join the club</button>
+      </form>
+      <p class="join__note" id="join-note" hidden>
+        You&apos;re on the list — check your inbox to confirm.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("join-form") as HTMLFormElement | null;
+  const note = document.getElementById("join-note");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (note) note.hidden = false;
+    form.reset();
+  });
+</script>
+
+<style lang="scss">
+  .join {
+    background: var(--cream);
+  }
+
+  .join__panel {
+    background: var(--accent);
+    color: var(--paper);
+    border-radius: 2rem;
+    padding: clamp(2.5rem, 6vw, 4.5rem);
+    text-align: center;
+    background-image: radial-gradient(
+        circle at 80% 20%,
+        rgba(255, 255, 255, 0.14),
+        transparent 45%
+      ),
+      radial-gradient(circle at 10% 90%, rgba(0, 0, 0, 0.12), transparent 40%);
+  }
+
+  .join__panel .eyebrow {
+    color: rgba(251, 246, 238, 0.85);
+  }
+
+  .join__title {
+    font-size: clamp(2.1rem, 5vw, 3.6rem);
+    margin: 0.8rem 0 1.1rem;
+  }
+
+  .join__lead {
+    max-width: 34rem;
+    margin: 0 auto;
+    color: rgba(251, 246, 238, 0.9);
+  }
+
+  .join__form {
+    margin: 2rem auto 0;
+    max-width: 30rem;
+    display: flex;
+    gap: 0.6rem;
+    background: var(--paper);
+    padding: 0.4rem;
+    border-radius: 100px;
+  }
+
+  .join__form input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    padding: 0.7rem 1.1rem;
+    font: inherit;
+    color: var(--ink);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .join__form .btn {
+    background: var(--ink);
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--espresso);
+      box-shadow: none;
+    }
+  }
+
+  .join__note {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--paper);
+  }
+
+  @media (max-width: 520px) {
+    .join__form {
+      flex-direction: column;
+      border-radius: 1.4rem;
+    }
+    .join__form .btn {
+      justify-content: center;
+    }
+  }
+</style>

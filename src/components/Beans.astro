@@ -1,0 +1,168 @@
+---
+const coffees = [
+  {
+    name: "Daybreak",
+    roast: "Light roast",
+    notes: "Jasmine · stone fruit · honey",
+    origin: "Ethiopia, Guji",
+    price: "$19",
+    image: "/images/bean-light.jpg",
+  },
+  {
+    name: "Hearthstone",
+    roast: "Medium roast",
+    notes: "Cocoa · toffee · red apple",
+    origin: "Colombia, Huila",
+    price: "$18",
+    image: "/images/bean-medium.jpg",
+  },
+  {
+    name: "Midnight Drum",
+    roast: "Dark roast",
+    notes: "Dark chocolate · molasses · walnut",
+    origin: "Sumatra, Aceh",
+    price: "$18",
+    image: "/images/bean-dark.jpg",
+  },
+];
+---
+
+<section class="beans section" id="coffees">
+  <div class="container">
+    <header class="beans__head" data-reveal>
+      <p class="eyebrow">The lineup</p>
+      <h2 class="beans__title">Three roasts,<br />each its own mood</h2>
+    </header>
+
+    <div class="beans__grid" data-stagger>
+      {
+        coffees.map((c) => (
+          <article class="card">
+            <div class="card__media">
+              <img src={c.image} loading="lazy" alt={`${c.name} coffee`} />
+              <span class="card__roast">{c.roast}</span>
+            </div>
+            <div class="card__body">
+              <div class="card__row">
+                <h3 class="card__name">{c.name}</h3>
+                <span class="card__price">{c.price}</span>
+              </div>
+              <p class="card__notes">{c.notes}</p>
+              <p class="card__origin">{c.origin}</p>
+              <button class="btn btn--ghost card__btn">Add to bag</button>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .beans {
+    background: var(--sand);
+  }
+
+  .beans__head {
+    margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .beans__title {
+    font-size: clamp(2.1rem, 5vw, 3.6rem);
+    margin-top: 0.8rem;
+  }
+
+  .beans__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+
+  .card {
+    background: var(--paper);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(34, 26, 18, 0.06);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 50px -28px rgba(34, 26, 18, 0.5);
+    }
+  }
+
+  .card__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card__roast {
+    position: absolute;
+    bottom: 0.9rem;
+    left: 0.9rem;
+    background: rgba(34, 26, 18, 0.78);
+    color: var(--paper);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+
+  .card__body {
+    padding: 1.4rem 1.5rem 1.6rem;
+  }
+
+  .card__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .card__name {
+    font-size: 1.5rem;
+  }
+
+  .card__price {
+    font-weight: 600;
+    color: var(--accent-deep);
+  }
+
+  .card__notes {
+    margin-top: 0.5rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .card__origin {
+    margin-top: 0.2rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .card__btn {
+    margin-top: 1.2rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .beans__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .beans__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

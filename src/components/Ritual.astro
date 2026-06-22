@@ -1,0 +1,130 @@
+---
+const steps = [
+  {
+    n: "01",
+    title: "Weigh & grind",
+    body: "Eighteen grams, ground medium-coarse, just before you brew.",
+  },
+  {
+    n: "02",
+    title: "Bloom",
+    body: "A splash of water off the boil. Wait forty seconds for the gas to escape.",
+  },
+  {
+    n: "03",
+    title: "Pour slow",
+    body: "Steady spirals to three hundred grams. No rush — this is the part to enjoy.",
+  },
+  {
+    n: "04",
+    title: "Sit with it",
+    body: "Let it cool a minute. The flavours open up as it does.",
+  },
+];
+---
+
+<section class="ritual section" id="ritual">
+  <div class="container ritual__grid">
+    <div class="ritual__media" data-reveal>
+      <img src="/images/brew.jpg" loading="lazy" alt="A barista pouring a slow brew" />
+    </div>
+
+    <div class="ritual__text">
+      <p class="eyebrow ritual__eyebrow" data-reveal>The ritual</p>
+      <h2 class="ritual__title" data-reveal>Four steps<br />to a better cup</h2>
+      <ol class="ritual__steps" data-stagger>
+        {
+          steps.map((s) => (
+            <li class="step">
+              <span class="step__num">{s.n}</span>
+              <div>
+                <h3 class="step__title">{s.title}</h3>
+                <p class="step__body">{s.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .ritual {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .ritual__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .ritual__media {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .ritual__eyebrow {
+    color: #e89a6f;
+  }
+
+  .ritual__title {
+    font-size: clamp(2.1rem, 4.8vw, 3.6rem);
+    margin: 0.9rem 0 2.2rem;
+  }
+
+  .ritual__steps {
+    list-style: none;
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.3rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid rgba(244, 236, 224, 0.14);
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  .step__num {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 2.5rem;
+  }
+
+  .step__title {
+    font-size: 1.35rem;
+  }
+
+  .step__body {
+    margin-top: 0.35rem;
+    color: rgba(244, 236, 224, 0.66);
+    max-width: 30rem;
+  }
+
+  @media (max-width: 820px) {
+    .ritual__grid {
+      grid-template-columns: 1fr;
+    }
+    .ritual__media {
+      aspect-ratio: 16 / 11;
+    }
+  }
+</style>
