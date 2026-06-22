@@ -3,30 +3,35 @@
 
 <section class="story section" id="story">
   <div class="container story__grid">
-    <div class="story__media" data-reveal>
-      <img src="/images/story.jpg" loading="lazy" alt="Beans tumbling in a roaster" />
+    <div class="story__media reveal" data-clip>
+      <img src="/images/portrait.jpg" loading="lazy" alt="A roaster at work" />
+      <span class="reveal__cover"></span>
       <span class="story__badge">Est. 2019</span>
     </div>
 
-    <div class="story__text" data-reveal>
-      <p class="eyebrow">Our story</p>
-      <h2 class="story__title">Roasted by fire,<br />in small drums</h2>
-      <p>
+    <div class="story__text">
+      <p class="eyebrow" data-reveal>Our story</p>
+      <h2 class="story__title" data-split>Roasted by hand, by ear, by nose</h2>
+      <p data-reveal>
         We started Ember with one cast-iron drum and a stubborn belief: that
         coffee tastes best when someone is paying attention. Every batch is
-        roasted by hand, by ear and by nose — never by autopilot.
+        roasted by hand — never by autopilot.
       </p>
-      <p>
+      <p data-reveal>
         We buy seasonally, in small lots, straight from farms we&apos;ve sat
         down with. What lands in your cup was green a few weeks ago and roasted
         a few days back.
       </p>
-      <a href="#ritual" class="btn btn--ghost">How we roast</a>
+      <a href="#ritual" class="btn btn--ghost" data-reveal>How we roast</a>
     </div>
   </div>
 </section>
 
 <style lang="scss">
+  .story {
+    background: var(--void);
+  }
+
   .story__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -39,7 +44,6 @@
     border-radius: 1.5rem;
     overflow: hidden;
     aspect-ratio: 4 / 5;
-    box-shadow: 0 30px 60px -30px rgba(34, 26, 18, 0.45);
 
     img {
       width: 100%;
@@ -48,14 +52,22 @@
     }
   }
 
+  .reveal__cover {
+    position: absolute;
+    inset: 0;
+    background: var(--coal);
+    z-index: 2;
+  }
+
   .story__badge {
     position: absolute;
     top: 1.1rem;
     left: 1.1rem;
-    background: var(--paper);
-    color: var(--ink);
+    z-index: 3;
+    background: var(--amber);
+    color: var(--void);
     font-size: 0.74rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 0.45rem 0.9rem;
@@ -63,14 +75,15 @@
   }
 
   .story__title {
-    font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
     margin: 0.9rem 0 1.6rem;
+    max-width: 14ch;
   }
 
   .story__text p {
     color: var(--muted);
     margin-bottom: 1.1rem;
-    max-width: 32rem;
+    max-width: 34rem;
   }
 
   .story__text .btn {

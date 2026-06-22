@@ -1,0 +1,59 @@
+---
+const items = [
+  "Freshly roasted",
+  "Small batch",
+  "Single origin",
+  "Roasted to order",
+  "Shipped in days",
+];
+---
+
+<section class="strip" aria-hidden="true">
+  <div class="marquee">
+    <div class="marquee__track">
+      {
+        [0, 1].map(() => (
+          <div class="marquee__group">
+            {items.map((item) => (
+              <span class="marquee__item">
+                {item}
+                <span class="marquee__dot">✶</span>
+              </span>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .strip {
+    background: var(--amber);
+    color: var(--void);
+    padding-block: 1.4rem;
+    border-block: 1px solid rgba(16, 13, 10, 0.15);
+  }
+
+  .marquee__group {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.8rem;
+    padding-inline: 0.9rem;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .marquee__dot {
+    font-size: 0.7em;
+    opacity: 0.7;
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+---
+
+<section class="manifesto section">
+  <div class="container">
+    <p class="eyebrow" data-reveal>Why we do this</p>
+    <h2 class="manifesto__text" data-split>
+      We think coffee got too fast. So we slowed it back down — one small drum,
+      one careful batch, one honest cup at a time.
+    </h2>
+  </div>
+</section>
+
+<style lang="scss">
+  .manifesto {
+    background: var(--void);
+  }
+
+  .manifesto__text {
+    margin-top: 2rem;
+    max-width: 22ch;
+    font-size: clamp(2rem, 5.2vw, 4.2rem);
+    line-height: 1.05;
+    font-weight: 500;
+  }
+
+  /* Tint the closing phrase without breaking the word reveal. */
+  .manifesto__text :global(.word:nth-last-child(-n + 6) .word__inner) {
+    color: var(--amber);
+  }
+</style>

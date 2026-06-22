@@ -1,0 +1,72 @@
+---
+const stats = [
+  { value: 3, suffix: "", label: "days from roast to your door" },
+  { value: 12, suffix: "", label: "single-origin farms on rotation" },
+  { value: 1, suffix: "", label: "cast-iron drum, still going" },
+  { value: 100, suffix: "%", label: "roasted in-house, by hand" },
+];
+---
+
+<section class="stats section">
+  <div class="container">
+    <div class="stats__grid" data-stagger>
+      {
+        stats.map((s) => (
+          <div class="stat">
+            <span class="stat__num">
+              <span data-count={s.value}>{s.value}</span>
+              {s.suffix}
+            </span>
+            <p class="stat__label">{s.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .stats {
+    background: var(--void);
+    border-top: 1px solid var(--line);
+  }
+
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .stat {
+    border-left: 1px solid var(--line);
+    padding-left: 1.4rem;
+  }
+
+  .stat__num {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1;
+    color: var(--amber);
+    letter-spacing: -0.03em;
+  }
+
+  .stat__label {
+    margin-top: 0.8rem;
+    color: var(--muted);
+    max-width: 16rem;
+  }
+
+  @media (max-width: 760px) {
+    .stats__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .stats__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

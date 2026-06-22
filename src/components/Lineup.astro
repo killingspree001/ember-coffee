@@ -1,0 +1,254 @@
+---
+const coffees = [
+  {
+    name: "Daybreak",
+    roast: "Light roast",
+    notes: "Jasmine · stone fruit · honey",
+    origin: "Ethiopia, Guji",
+    price: "$19",
+    image: "/images/bean-light.jpg",
+  },
+  {
+    name: "Hearthstone",
+    roast: "Medium roast",
+    notes: "Cocoa · toffee · red apple",
+    origin: "Colombia, Huila",
+    price: "$18",
+    image: "/images/bean-medium.jpg",
+  },
+  {
+    name: "Midnight Drum",
+    roast: "Dark roast",
+    notes: "Dark chocolate · molasses · walnut",
+    origin: "Sumatra, Aceh",
+    price: "$18",
+    image: "/images/bean-dark.jpg",
+  },
+  {
+    name: "Nightcap",
+    roast: "Decaf",
+    notes: "Brown sugar · plum · cedar",
+    origin: "Colombia, Cauca",
+    price: "$19",
+    image: "/images/bag.jpg",
+  },
+  {
+    name: "Cold Snap",
+    roast: "Cold brew",
+    notes: "Cacao nib · fig · cola",
+    origin: "House blend",
+    price: "$16",
+    image: "/images/cup.jpg",
+  },
+];
+---
+
+<section class="lineup" id="coffees" data-horizontal>
+  <div class="lineup__track" data-track>
+    <div class="lineup__intro">
+      <p class="eyebrow">The lineup</p>
+      <h2 class="lineup__title">Five roasts,<br />five moods</h2>
+      <p class="lineup__hint">
+        <span>Keep scrolling</span>
+        <span class="lineup__arrow">⟶</span>
+      </p>
+    </div>
+
+    {
+      coffees.map((c, i) => (
+        <article class="roast">
+          <div class="roast__media">
+            <img src={c.image} loading="lazy" alt={`${c.name} coffee`} />
+            <span class="roast__tag">{c.roast}</span>
+            <span class="roast__index">0{i + 1}</span>
+          </div>
+          <div class="roast__body">
+            <div class="roast__row">
+              <h3 class="roast__name">{c.name}</h3>
+              <span class="roast__price">{c.price}</span>
+            </div>
+            <p class="roast__notes">{c.notes}</p>
+            <p class="roast__origin">{c.origin}</p>
+            <button class="btn btn--ghost roast__btn">Add to bag</button>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style lang="scss">
+  .lineup {
+    background: var(--coal);
+    overflow: hidden;
+  }
+
+  .lineup__intro {
+    flex-shrink: 0;
+  }
+
+  .lineup__title {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    margin-top: 1rem;
+  }
+
+  .lineup__hint {
+    margin-top: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .lineup__arrow {
+    color: var(--amber);
+    animation: nudge 1.6s var(--ease) infinite;
+  }
+
+  @keyframes nudge {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(8px);
+    }
+  }
+
+  .roast {
+    flex-shrink: 0;
+    width: 360px;
+    background: var(--char);
+    border: 1px solid var(--line);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.4s var(--ease);
+
+    &:hover {
+      transform: translateY(-8px);
+    }
+  }
+
+  .roast__media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+  }
+
+  .roast:hover .roast__media img {
+    transform: scale(1.06);
+  }
+
+  .roast__tag {
+    position: absolute;
+    bottom: 0.9rem;
+    left: 0.9rem;
+    background: rgba(16, 13, 10, 0.8);
+    color: var(--cream);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+
+  .roast__index {
+    position: absolute;
+    top: 0.9rem;
+    right: 1.1rem;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 700;
+    color: rgba(241, 231, 214, 0.85);
+    mix-blend-mode: difference;
+  }
+
+  .roast__body {
+    padding: 1.5rem 1.6rem 1.7rem;
+  }
+
+  .roast__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .roast__name {
+    font-size: 1.6rem;
+  }
+
+  .roast__price {
+    font-weight: 600;
+    color: var(--amber);
+  }
+
+  .roast__notes {
+    margin-top: 0.5rem;
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .roast__origin {
+    margin-top: 0.2rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .roast__btn {
+    margin-top: 1.3rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Desktop: pinned horizontal track (driven by GSAP). */
+  @media (min-width: 860px) {
+    .lineup {
+      height: 100vh;
+    }
+    .lineup__track {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 100vh;
+      width: max-content;
+      padding-inline: clamp(32px, 7vw, 120px);
+    }
+    .lineup__intro {
+      width: 30rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Mobile: a normal swipeable carousel. */
+  @media (max-width: 859px) {
+    .lineup__track {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: clamp(4rem, 12vw, 6rem) 24px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .lineup__intro {
+      width: 16rem;
+      scroll-snap-align: start;
+      align-self: center;
+    }
+    .roast {
+      width: 80vw;
+      max-width: 340px;
+      scroll-snap-align: center;
+    }
+  }
+</style>

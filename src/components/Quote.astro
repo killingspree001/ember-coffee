@@ -3,31 +3,31 @@
 
 <section class="quote">
   <div class="quote__media">
-    <img data-parallax src="/images/atmosphere.jpg" loading="lazy" alt="A quiet corner of the roastery café" />
+    <img data-parallax="22" src="/images/atmosphere.jpg" loading="lazy" alt="A quiet corner of the roastery" />
     <div class="quote__scrim"></div>
   </div>
 
   <div class="container quote__inner">
-    <blockquote class="quote__text" data-reveal>
-      “Good coffee isn&apos;t complicated. It&apos;s just someone caring about
-      every small thing, all the way down.”
+    <blockquote class="quote__text" data-split>
+      Good coffee isn&apos;t complicated. It&apos;s just someone caring about
+      every small thing, all the way down.
     </blockquote>
-    <cite class="quote__cite" data-reveal>— Mara Okonkwo, founder</cite>
+    <cite class="quote__cite" data-reveal>— Mara Okonkwo, founder &amp; head roaster</cite>
   </div>
 </section>
 
 <style lang="scss">
   .quote {
     position: relative;
-    color: var(--paper);
-    padding-block: clamp(6rem, 14vw, 12rem);
+    color: var(--cream);
+    padding-block: clamp(7rem, 16vw, 13rem);
     overflow: hidden;
   }
 
   .quote__media {
     position: absolute;
-    inset: -10% 0;
-    z-index: -1;
+    inset: -12% 0;
+    z-index: 0;
 
     img {
       width: 100%;
@@ -39,28 +39,30 @@
   .quote__scrim {
     position: absolute;
     inset: 0;
-    background: rgba(20, 14, 9, 0.66);
+    background: rgba(16, 13, 10, 0.72);
   }
 
   .quote__inner {
+    position: relative;
+    z-index: 1;
     text-align: center;
-    max-width: 56rem;
+    max-width: 60rem;
   }
 
   .quote__text {
     font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 500;
-    font-size: clamp(1.8rem, 4.4vw, 3.1rem);
-    line-height: 1.15;
+    font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+    line-height: 1.12;
     letter-spacing: -0.02em;
   }
 
   .quote__cite {
     display: block;
-    margin-top: 1.8rem;
+    margin-top: 2rem;
     font-style: normal;
     font-size: 0.95rem;
     letter-spacing: 0.04em;
-    color: rgba(251, 246, 238, 0.75);
+    color: var(--muted);
   }
 </style>
